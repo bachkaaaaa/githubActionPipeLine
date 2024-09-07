@@ -1,0 +1,29 @@
+<form  [formGroup]="signupForm">
+    <div class="mb-3">
+      <label for="username" class="form-label">Email address</label>
+      <input type="text" formControlName="username" class="form-control" id="username" >
+      <div *ngIf="signupForm.get('username').invalid && signupForm.get('username').touched">
+        Username is required.
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="password" class="form-label">Password</label>
+      <input type="password" formControlName="password"class="form-control" id="password">
+      <div *ngIf="signupForm.get('password').invalid && signupForm.get('password').touched">
+        Check Password Again.
+      </div>
+    </div>
+    <div class="mb-3">
+        <label for="comfirmpassword" class="form-label">Password</label>
+        <input type="password" formControlName="confirmPassword"class="form-control" id="confirmpassword">
+        <div *ngIf="signupForm.get('password')==signupForm">
+          Check Password Again.
+        </div>
+      </div>
+
+    <div class="mb-3 form-check">
+      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+      <label class="form-check-label" for="exampleCheck1">Privacy check</label>
+    </div>
+    <button (click)="onClick()" type="submit" class="btn btn-primary">Submit</button>
+  </form>
