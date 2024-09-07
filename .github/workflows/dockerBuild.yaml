@@ -1,7 +1,7 @@
-name: Docker image build
+name: Dockerimagebuild
 
 on:
-  workflow_dispatch:
+  workflow_dispatch:x
     branches: [ "master" ]
   
 jobs:
