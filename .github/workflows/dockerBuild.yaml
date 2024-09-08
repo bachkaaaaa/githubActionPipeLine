@@ -8,6 +8,9 @@ jobs:
   build_and_push:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
       - name: Build and Push Container to docker.io
         uses: GlueOps/github-actions-build-push-containers@v0.3.7
         with:
@@ -16,4 +19,13 @@ jobs:
           dockerhub_password: ${{ secrets.DOCKERHUB_PASSWORD }}
         Target Reference: "tag-test"
 
-   
+  deploy:
+  runs-on: ubuntu-latest
+    steps:
+      - name : Get Docker Image
+      - name: Deploy 
+        uses: jsmrcaga/action-netlify-deploy@v2.0.0
+        with:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.MY_TOKEN_SECRET }}
+      - name: echo
+        if: ${{ cancelled() }} echo "cancelled"
