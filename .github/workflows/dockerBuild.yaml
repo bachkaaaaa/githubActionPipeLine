@@ -17,15 +17,19 @@ jobs:
           registry: "docker.io"
           dockerhub_username: ${{ secrets.DOCKERHUB_USERNAME }}
           dockerhub_password: ${{ secrets.DOCKERHUB_PASSWORD }}
-        Target Reference: "tag-test"
+          Target_Reference: "tag-test"   
 
   deploy:
-  runs-on: ubuntu-latest
+    runs-on: ubuntu-latest  
     steps:
-      - name : Get Docker Image
+      - name: Get Docker Image
+        run: echo "Pulling Docker image"  
+
       - name: Deploy 
         uses: jsmrcaga/action-netlify-deploy@v2.0.0
         with:
           NETLIFY_AUTH_TOKEN: ${{ secrets.MY_TOKEN_SECRET }}
+        
       - name: echo
-        if: ${{ cancelled() }} echo "cancelled"
+        if: ${{ cancelled() }}
+        run: echo "cancelled" 
