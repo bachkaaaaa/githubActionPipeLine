@@ -14,7 +14,7 @@ jobs:
         - name: Set up Node.js
           uses: actions/setup-node@v4
           with:
-              node-version: '16'  # Use the Node version compatible with your Angular appcrets.DOCKERHUB_USERNAME }}/github.repository_id:tag-test
+              node-version: '18.13'  # Use the Node version compatible with your Angular appcrets.DOCKERHUB_USERNAME }}/github.repository_id:tag-test
         - name: Install Dependencies
           run: npm ci  # Faster than npm install, for CI environments
 
